@@ -68,8 +68,8 @@ registerRouter.route('/profile')
   .all(function(req, res, next) {
     if (!req.user) {
       res.redirect('/');
-    }
-    next();
+    } else
+      next();
   })
   .get((req, res) => {
     if (req.user.userType === 'client')
@@ -83,8 +83,8 @@ registerRouter.route('/clientUI')
   .all(function(req, res, next) {
     if (!req.user) {
       res.redirect('/');
-    }
-    next();
+    } else 
+      next();
   })
   .get((req, res, next) => {
     const user = req.user;
@@ -95,7 +95,6 @@ registerRouter.route('/clientUI')
       }
       res.render('clientUI', { user: req.user, location: {}, recyclables: entities });
     });
-    // res.render('clientUI', { user: req.user, location: {}, response: message, recyclables: {} });
   });
 
 
@@ -103,8 +102,8 @@ registerRouter.route('/driverUI')
   .all(function(req, res, next) {
     if (!req.user) {
       res.redirect('/');
-    }
-    next();
+    } else 
+      next();
   })
   .get((req, res) => {
     const user = req.user;
@@ -121,8 +120,8 @@ registerRouter.route('/mapui/mylist')
   .all(function(req, res, next) {
     if (!req.user) {
       res.redirect('/');
-    }
-    next();
+    } else 
+      next();
   })
   .get((req, res) => {
     res.render('myList', { user: req.user });
